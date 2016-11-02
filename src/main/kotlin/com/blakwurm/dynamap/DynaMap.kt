@@ -6,26 +6,10 @@ import com.esotericsoftware.kryo.io.Input
 import com.esotericsoftware.kryo.io.Output
 import com.google.common.collect.ImmutableMap
 import de.javakaffee.kryoserializers.guava.*
-import java.io.FileInputStream
-import java.io.FileOutputStream
 
 /**
  * Created by achyt_000 on 10/12/2016.
  */
-
-fun main(args: Array<String>) {
-    val kryo = Kryo()
-
-    val output = Output(FileOutputStream("file.bin"))
-    val user = User("Mario", Address("Manchester", "Flat 86", "M###XX"))
-    kryo.writeObject(output, user)
-    output.close()
-
-    val input = Input(FileInputStream("file.bin"))
-    val u = kryo.readObject(input, User::class.java)
-    input.close()
-    println("u = ${u}")
-}
 
 data class Address(val city: String? = null, val line: String? = null, val postCode: String? = null)
 
